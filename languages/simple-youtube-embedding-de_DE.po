@@ -1,0 +1,81 @@
+# German translation for Simple YouTube Embedding.
+# Keep in sync with simple-youtube-embedding-de_DE.l10n.php (that file is what WordPress loads).
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple YouTube Embedding\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: simple-youtube-embedding\n"
+
+msgid "Upcoming"
+msgstr "Demnächst live"
+
+msgid "Live"
+msgstr "Live"
+
+msgid "Recording"
+msgstr "Aufzeichnung"
+
+msgid "Live now – click to play"
+msgstr "Jetzt live: zum Abspielen klicken"
+
+msgid "Starts in %s"
+msgstr "Beginnt in %s"
+
+msgid "Starts in %1$s day, %2$s"
+msgstr "Beginnt in %1$s Tag, %2$s"
+
+msgid "Starts in %1$s days, %2$s"
+msgstr "Beginnt in %1$s Tagen, %2$s"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Close video"
+msgstr "Video schließen"
+
+msgid "Playing a video connects to YouTube."
+msgstr "Beim Abspielen wird eine Verbindung zu YouTube hergestellt."
+
+msgid "Please add a channel or playlist ID, or set a default channel under Settings → Simple YouTube Embedding."
+msgstr "Bitte eine Kanal- oder Playlist-ID angeben oder unter Einstellungen → Simple YouTube Embedding einen Standard-Kanal festlegen."
+
+msgid "Play video: %s"
+msgstr "Video abspielen: %s"
+
+msgid "Play video"
+msgstr "Video abspielen"
+
+msgid "Show more videos"
+msgstr "Weitere Videos anzeigen"
+
+msgid "Please provide a valid video ID, e.g. video=\"abc123XYZ_-\"."
+msgstr "Bitte eine gültige Video-ID angeben, z. B. video=\"abc123XYZ_-\"."
+
+msgid "Please enter a channel ID that starts with \"UC\" and has 24 characters."
+msgstr "Bitte eine Kanal-ID eingeben, die mit „UC“ beginnt und 24 Zeichen lang ist."
+
+msgid "Default channel ID"
+msgstr "Standard-Kanal-ID"
+
+msgid "Used when a shortcode has neither \"channel\" nor \"playlist\". You can find the ID on YouTube under your channel → About → Share channel → Copy channel ID."
+msgstr "Wird verwendet, wenn ein Shortcode weder „channel“ noch „playlist“ enthält. Die ID findest du auf YouTube unter deinem Kanal → Info → Kanal teilen → Kanal-ID kopieren."
+
+msgid "Shortcodes"
+msgstr "Shortcodes"
+
+msgid "grid of the latest videos"
+msgstr "Raster mit den neuesten Videos"
+
+msgid "numbered list with \"Show more videos\""
+msgstr "nummerierte Liste mit „Weitere Videos anzeigen“"
+
+msgid "live stream with countdown"
+msgstr "Livestream mit Countdown"
+
+msgid "Settings"
+msgstr "Einstellungen"
+

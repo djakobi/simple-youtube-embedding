@@ -1,0 +1,32 @@
+<?php
+// German translation (de_DE). Source: simple-youtube-embedding-de_DE.po
+return array(
+	'domain'       => 'simple-youtube-embedding',
+	'language'     => 'de_DE',
+	'plural-forms' => 'nplurals=2; plural=(n != 1);',
+	'messages'     => array(
+		'Upcoming'                             => 'Demnächst live',
+		'Live'                                 => 'Live',
+		'Recording'                            => 'Aufzeichnung',
+		'Live now – click to play'             => 'Jetzt live: zum Abspielen klicken',
+		'Starts in %s'                         => 'Beginnt in %s',
+		'Starts in %1$s day, %2$s'             => 'Beginnt in %1$s Tag, %2$s',
+		'Starts in %1$s days, %2$s'            => 'Beginnt in %1$s Tagen, %2$s',
+		'Video'                                => 'Video',
+		'Close video'                          => 'Video schließen',
+		'Playing a video connects to YouTube.' => 'Beim Abspielen wird eine Verbindung zu YouTube hergestellt.',
+		'Please add a channel or playlist ID, or set a default channel under Settings → Simple YouTube Embedding.' => 'Bitte eine Kanal- oder Playlist-ID angeben oder unter Einstellungen → Simple YouTube Embedding einen Standard-Kanal festlegen.',
+		'Play video: %s'                       => 'Video abspielen: %s',
+		'Play video'                           => 'Video abspielen',
+		'Show more videos'                     => 'Weitere Videos anzeigen',
+		'Please provide a valid video ID, e.g. video="abc123XYZ_-".' => 'Bitte eine gültige Video-ID angeben, z. B. video="abc123XYZ_-".',
+		'Please enter a channel ID that starts with "UC" and has 24 characters.' => 'Bitte eine Kanal-ID eingeben, die mit „UC“ beginnt und 24 Zeichen lang ist.',
+		'Default channel ID'                   => 'Standard-Kanal-ID',
+		'Used when a shortcode has neither "channel" nor "playlist". You can find the ID on YouTube under your channel → About → Share channel → Copy channel ID.' => 'Wird verwendet, wenn ein Shortcode weder „channel“ noch „playlist“ enthält. Die ID findest du auf YouTube unter deinem Kanal → Info → Kanal teilen → Kanal-ID kopieren.',
+		'Shortcodes'                           => 'Shortcodes',
+		'grid of the latest videos'            => 'Raster mit den neuesten Videos',
+		'numbered list with "Show more videos"' => 'nummerierte Liste mit „Weitere Videos anzeigen“',
+		'live stream with countdown'           => 'Livestream mit Countdown',
+		'Settings'                             => 'Einstellungen',
+	),
+);

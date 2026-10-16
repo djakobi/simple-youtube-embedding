@@ -1,0 +1,378 @@
+/* Simple YouTube Embedding – card layout with soft shadow. Customise via the CSS variables on .sye. */
+.sye {
+	--sye-accent: #1e73be;
+	--sye-live-color: #d32f2f;
+	--sye-radius: 3px;
+	--sye-shadow: 0 0 6px rgba( 0, 0, 0, 0.15 );
+	--sye-shadow-hover: 0 4px 16px rgba( 0, 0, 0, 0.2 );
+}
+
+/* Grid */
+.sye-grid {
+	display: grid;
+	grid-template-columns: repeat( var( --sye-columns, 3 ), minmax( 0, 1fr ) );
+	gap: 30px;
+}
+
+@media ( max-width: 900px ) {
+	.sye-grid {
+		grid-template-columns: repeat( 2, minmax( 0, 1fr ) );
+		gap: 20px;
+	}
+}
+
+@media ( max-width: 600px ) {
+	.sye-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Hidden entries ("visible" attribute) – must win over the display rules of grid and list. */
+.sye .sye-card[hidden] {
+	display: none !important;
+}
+
+.sye-more-wrap {
+	margin: 24px 0 0;
+	text-align: center;
+}
+
+.sye-more-count {
+	opacity: 0.75;
+}
+
+/* List: numbered, one per row */
+.sye.sye-list {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin: 0 !important;
+	padding: 0 !important;
+	list-style: none !important;
+}
+
+.sye-list > .sye-card {
+	display: grid;
+	grid-template-columns: 56px minmax( 160px, 260px ) 1fr;
+	align-items: center;
+	margin: 0;
+}
+
+.sye-list > .sye-card::before,
+.sye-list > .sye-card::marker {
+	content: none;
+}
+
+.sye-number {
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.6rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	color: var( --sye-accent );
+}
+
+.sye-list .sye-text {
+	padding: 16px 24px;
+}
+
+.sye-list .sye-play {
+	width: 46px;
+	height: 46px;
+}
+
+.sye-list .sye-play::after {
+	border-width: 8px 0 8px 13px;
+}
+
+@media ( max-width: 600px ) {
+	.sye-list > .sye-card {
+		grid-template-columns: 40px 1fr;
+	}
+
+	.sye-list .sye-text {
+		grid-column: 2;
+		padding: 12px 16px 16px 0;
+	}
+
+	.sye-number {
+		grid-row: span 2;
+		font-size: 1.3rem;
+	}
+}
+
+.sye-card,
+.sye-live {
+	overflow: hidden;
+	border-radius: var( --sye-radius );
+	background: #fff;
+	box-shadow: var( --sye-shadow );
+	transition: box-shadow 0.2s ease;
+}
+
+.sye-card:hover,
+.sye-card:focus-within {
+	box-shadow: var( --sye-shadow-hover );
+}
+
+.sye-text {
+	padding: 20px;
+}
+
+/* Preview (thumbnail + play button) */
+.sye-player {
+	position: relative;
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: #000;
+	cursor: pointer;
+	font: inherit;
+}
+
+/*
+ * Neutralise theme styles for <button>. Many themes style every button globally,
+ * sometimes with ID selectors, so !important is needed here.
+ */
+.sye button.sye-player,
+.sye button.sye-player:hover,
+.sye button.sye-player:focus {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+	background: #000 !important;
+	box-shadow: none !important;
+	color: inherit !important;
+	line-height: 0 !important;
+	text-transform: none !important;
+	transform: none !important;
+	min-height: 0 !important;
+	height: auto !important;
+}
+
+.sye-player img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.4s ease;
+}
+
+.sye-player:hover img,
+.sye-player:focus-visible img {
+	transform: scale( 1.04 );
+}
+
+.sye-player:focus-visible {
+	outline: 3px solid var( --sye-accent ) !important;
+	outline-offset: -3px;
+}
+
+/* Round play button */
+.sye-play {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	transform: translate( -50%, -50% );
+	border: 2px solid #fff;
+	border-radius: 50%;
+	background: rgba( 0, 0, 0, 0.45 );
+	transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sye-play::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 54%;
+	transform: translate( -50%, -50% );
+	border-style: solid;
+	border-width: 10px 0 10px 17px;
+	border-color: transparent transparent transparent #fff;
+}
+
+.sye-player:hover .sye-play,
+.sye-player:focus-visible .sye-play {
+	background: var( --sye-accent );
+	transform: translate( -50%, -50% ) scale( 1.08 );
+}
+
+.sye-iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* Title and date */
+.sye-title {
+	margin: 0 0 8px;
+	font-size: 1.15rem;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.sye-date {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 0.75rem;
+}
+
+.sye-date .sye-icon {
+	font-size: 14px;
+}
+
+.sye-note {
+	margin: 14px 0 0;
+	font-size: 0.75rem;
+	opacity: 0.6;
+}
+
+/* Overlay for videos from grid and list */
+.sye-overlay {
+	/* Some themes reset "* { margin: 0 }", which would break the centring of the dialog. */
+	margin: auto !important;
+	width: min( 1100px, 92vw, calc( ( 100vh - 160px ) * 16 / 9 ) );
+	max-width: none;
+	max-height: none;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	overflow: visible;
+}
+
+.sye-overlay::backdrop {
+	background: rgba( 0, 0, 0, 0.88 );
+}
+
+.sye-overlay .sye-player {
+	cursor: default;
+	box-shadow: 0 10px 40px rgba( 0, 0, 0, 0.5 );
+}
+
+.sye-overlay-title {
+	margin: 14px 0 0;
+	color: #fff;
+	font-size: 1.1rem;
+	font-weight: 700;
+	line-height: 1.35;
+}
+
+.sye-overlay button.sye-close {
+	position: absolute;
+	top: -48px;
+	right: 0;
+	width: 40px !important;
+	height: 40px !important;
+	min-width: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 2px solid #fff !important;
+	border-radius: 50% !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	color: #fff !important;
+	font-size: 22px !important;
+	line-height: 36px !important;
+	cursor: pointer;
+}
+
+.sye-overlay button.sye-close:hover,
+.sye-overlay button.sye-close:focus-visible {
+	background: rgba( 255, 255, 255, 0.15 ) !important;
+}
+
+/* Little room above the video (landscape phones, small windows): move the button into the video. */
+@media ( max-height: 560px ), ( max-width: 600px ) {
+	.sye-overlay button.sye-close {
+		top: 8px;
+		right: 8px;
+		z-index: 2;
+		background: rgba( 0, 0, 0, 0.6 ) !important;
+	}
+}
+
+/* Live stream */
+.sye-live .sye-play {
+	width: 84px;
+	height: 84px;
+	border-width: 3px;
+}
+
+.sye-live .sye-play::after {
+	border-width: 14px 0 14px 24px;
+}
+
+.sye-status {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	padding: 5px 12px;
+	border-radius: var( --sye-radius );
+	background: rgba( 0, 0, 0, 0.75 );
+	color: #fff;
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.sye-status:empty {
+	display: none;
+}
+
+.sye-live[data-sye-state="live"] .sye-status {
+	background: var( --sye-live-color );
+	animation: sye-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes sye-pulse {
+	50% { opacity: 0.6; }
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.sye-live[data-sye-state="live"] .sye-status,
+	.sye-player img {
+		animation: none;
+		transition: none;
+	}
+}
+
+.sye-live-info {
+	padding: 20px;
+	text-align: center;
+}
+
+.sye-live-title {
+	margin: 0 0 4px;
+}
+
+.sye-live-time {
+	margin: 0;
+	opacity: 0.75;
+}
+
+.sye-countdown {
+	margin: 10px 0 0;
+	font-size: 1.25rem;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	color: var( --sye-accent );
+}
+
+.sye-countdown:empty {
+	display: none;
+}
+
+.sye-live[data-sye-state="live"] .sye-countdown {
+	color: var( --sye-live-color );
+}
